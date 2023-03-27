@@ -148,6 +148,6 @@ collections:
     format: "frontmatter"
     create: true
     fields:
-      - label: "Slug"
-        name: "slug"
+      - label: "Test"
+        name: "test"
         widget: "string"
