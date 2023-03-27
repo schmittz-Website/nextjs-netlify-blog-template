@@ -150,8 +150,19 @@ collections:
     fields:
       - name: "section"
         label: "Section"
+        title: "Homepage"
         widget: "object"
         fields: 
         - label: "Test"
           name: "test"
           widget: "string"
+          required: false
+        - label: "Menu"
+          name: "menu"
+          widget: "list"
+          summary: "{{fields.keyword.keyword}}"
+          required: false
+          field:
+            label: Keyword
+            name: keyword
+            widget: "string"
