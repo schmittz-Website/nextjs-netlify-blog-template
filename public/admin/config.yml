@@ -148,20 +148,17 @@ collections:
     format: "frontmatter"
     create: true
     fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
       - name: "firstsection"
         label: "Section with logo and menu"
         widget: "object"
         fields:
-        - label: "Title"
-          name: "title"
-          widget: "string"
-        - label: "Test"
-          name: "test"
-          widget: "string"
         - label: "Menu"
           name: "menu"
           widget: "list"
-          summary: "{{field.keyword.name}}"
+          summary: "{{fields.title}}"
           field:
             label: Menu item
             name: menuitem
