@@ -148,6 +148,10 @@ collections:
     format: "frontmatter"
     create: true
     fields:
-      - label: "Test"
-        name: "test"
-        widget: "string"
+      - name: "section"
+        label: "Section"
+        widget: "object"
+        fields: 
+        - label: "Test"
+          name: "test"
+          widget: "string"
