@@ -139,3 +139,30 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
+
+  - name: "homepage"
+    label: "Homepage"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "Site Config"
+        description: "Homepage contents"
+        widget: "object"
+        fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
+            media_library:
+              config:
+                multiple: true
+          - label: "Menu"
+            name: "menu"
+            widget: "list"
+            summary: "{{fields.keyword.keyword}}"
+            required: false
+            field:
+              label: Keyword
+              name: keyword
+              widget: "string"
