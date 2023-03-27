@@ -142,12 +142,11 @@ collections:
 
   - name: "homepage"
     label: "Homepage"
+    title: "Homepage"
     folder: "content/home/"
     extension: "mdx"
     format: "frontmatter"
     create: true
-    slug: "{{slug}}"
-    identifier_field: slug
     fields:
       - label: "Slug"
         name: "slug"
