@@ -145,7 +145,7 @@ collections:
     delete: false
     editor:
       preview: false
-    files:
+    fields:
       - name: "general"
         label: "Site Config"
         description: "Homepage contents"
