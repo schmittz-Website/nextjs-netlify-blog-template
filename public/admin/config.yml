@@ -148,8 +148,8 @@ collections:
     format: "frontmatter"
     create: true
     fields:
-      - name: "section"
-        label: "Section"
+      - name: "firstsection"
+        label: "Section with logo and menu"
         widget: "object"
         fields:
         - label: "Title"
@@ -161,8 +161,14 @@ collections:
         - label: "Menu"
           name: "menu"
           widget: "list"
-          summary: "Menu"
+          summary: "{{field.keyword.name}}"
           field:
-            label: Keyword
-            name: keyword
+            label: Menu item
+            name: menuitem
             widget: "string"
+        - label: "First Image"
+          name: "thumbnail"
+          widget: "image"
+          media_library:
+            config:
+              multiple: true
