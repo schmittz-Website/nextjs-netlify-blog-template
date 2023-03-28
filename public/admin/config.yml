@@ -197,7 +197,7 @@ collections:
         fields:
         - label: "Body"
           name: "body"
-          widget: "markdown"
+          widget: "text"
           required: false
         - label: "Default Image"
           name: "img"
