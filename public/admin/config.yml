@@ -192,7 +192,7 @@ collections:
             config:
               multiple: true
       - name: "defaultsection"
-        label: "Section with markdown option"
+        label: "Section with HTML option"
         widget: "object"
         fields:
         - label: "Body"
