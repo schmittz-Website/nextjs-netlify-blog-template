@@ -197,7 +197,7 @@ collections:
         fields:
         - label: "Body"
           name: "body"
-          widget: "text"
+          widget: "code"
           required: false
         - label: "Default Image"
           name: "img"
