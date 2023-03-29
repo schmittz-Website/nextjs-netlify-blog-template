@@ -209,15 +209,6 @@ collections:
           required: false
         - label: "Opening hours"
           name: "openinghours"
-          widget: "list"
-          summary: "{{fields.title}}"
-          required: false
-          field:
-            label: Opening hour
-            name: openinghour
-            widget: "string"
-        - label: "Opening hours"
-          name: "openinghours"
           widget: list
           required: false
           fields:
