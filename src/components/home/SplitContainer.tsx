@@ -1,5 +1,4 @@
-import { useMemo } from "react";
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Navigation from "../Navigation";
 import Logo from "../../assets/logo.png";
@@ -25,12 +24,27 @@ const sectionOptions = {
       <>
         <Navigation data={menuData}/>
         <div className={'center-content'}>
-          <img src={Logo.src} width={Logo.width} height={Logo.height} />
+          <img src={Logo.src} />
           <hr />
           <p>{description}</p>
           <hr />
           <span>Berlin</span>
           <style jsx>{`
+            @media (max-width: 769px) {
+              .center-content {
+                padding: 90px 0 0;
+              }
+            }
+            img {
+              width: 100px;
+              height: 100px;
+            }
+            @media (min-width: 769px) {
+              img {
+                width: 180px;
+                height: 180px;
+              }
+            }
             span {
               font-family: 'Playfair Display', serif;
               font-style: italic;
@@ -70,6 +84,7 @@ const sectionOptions = {
 const getSectionContent = (type, content) => sectionOptions[type](content)
 
 export default function SplitContainer({ data }: Props) {
+  const [ isMobile, setIsMobile ] = useState(false)
 
   const validSection = useMemo(() => {
     const sectionKey = Object.keys(data).find(key => {
@@ -88,9 +103,17 @@ export default function SplitContainer({ data }: Props) {
 
   const SectionContent = useMemo(() => getSectionContent(type, content), [type,content]);
 
+  const updateSize = () => setIsMobile(window.innerWidth < 769 ? true : false)
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 769 ? true : false)
+    window.addEventListener("resize", updateSize);
+
+    return () => window.removeEventListener("resize", updateSize);
+  }, [])
+
   return (
     <div className={`container ${type}`}>
-      <div className={'image-wrapper'} {...!leftalign && { style : { order: 1 } }}>
+      <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <Image src={img} layout={'fill'} className={'cover-img'}/>
       </div>
       <div className={'text-wrapper'} style={{ backgroundColor: color }}>
@@ -101,7 +124,7 @@ export default function SplitContainer({ data }: Props) {
           height: 100vh;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-rows: 2fr 1fr;
         }
 
         .image-wrapper,
@@ -124,6 +147,8 @@ export default function SplitContainer({ data }: Props) {
 
         @media (min-width: 769px) {
           .container {
+            grid-template-rows: unset;
+            grid-template-columns: 1fr 1fr;
           }
         }
       `}</style>

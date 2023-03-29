@@ -79,17 +79,28 @@ hr {
 
 .center-content {
   width: 100%;
-  margin: auto 50px;
+  margin: auto 30px;
   padding: 50px 0;
+}
+
+.center-content > *:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 769px) {
+  .center-content {
+    margin: auto 50px;
+    padding: 50px 0;
+  }
+
+  .center-content > *:not(:last-child) {
+    margin-bottom: 30px;
+  }
 }
 
 @media (min-width: 1440px) {
   .center-content {
     margin: auto 20%;
-    padding: 20% 0;
+    padding: 50px 0;
   }
-}
-
-.center-content > *:not(:last-child) {
-  margin-bottom: 30px;
 }
