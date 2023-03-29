@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import Navigation from "../Navigation";
 import Logo from "../../assets/logo.png";
 
@@ -24,8 +23,7 @@ const sectionOptions = {
       <>
         <Navigation data={menuData}/>
         <div className={'center-content'}>
-          {/* <Image src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/> */}
-          <img src={Logo.src}/>
+          <img src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
           <hr />
           <p>{description}</p>
           <hr />
@@ -35,12 +33,6 @@ const sectionOptions = {
               .center-content {
                 padding: 90px 0 0;
               }
-              .center-content > hr:first-of-type {
-                margin-top: 20px;
-              }
-            }
-            .center-content > hr:first-of-type {
-              margin-top: 30px;
             }
             span {
               font-family: 'Playfair Display', serif;
@@ -111,7 +103,7 @@ export default function SplitContainer({ data }: Props) {
   return (
     <div className={`container ${type}`}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
-        {/* <Image src={img} layout={'fill'} className={'cover-img'}/> */}
+        <img src={img} className={'cover-img'}/>
       </div>
       <div className={'text-wrapper'} style={{ backgroundColor: color }}>
         {SectionContent}
