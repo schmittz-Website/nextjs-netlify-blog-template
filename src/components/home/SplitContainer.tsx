@@ -24,7 +24,8 @@ const sectionOptions = {
       <>
         <Navigation data={menuData}/>
         <div className={'center-content'}>
-          <Image src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
+          {/* <Image src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/> */}
+          <img src={Logo.src}/>
           <hr />
           <p>{description}</p>
           <hr />
@@ -110,7 +111,7 @@ export default function SplitContainer({ data }: Props) {
   return (
     <div className={`container ${type}`}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
-        <Image src={img} layout={'fill'} className={'cover-img'}/>
+        {/* <Image src={img} layout={'fill'} className={'cover-img'}/> */}
       </div>
       <div className={'text-wrapper'} style={{ backgroundColor: color }}>
         {SectionContent}
