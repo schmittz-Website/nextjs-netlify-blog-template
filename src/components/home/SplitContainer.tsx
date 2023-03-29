@@ -17,14 +17,14 @@ const getOpeningHours = hours => hours.map((el, idx) => {
 })
 
 const sectionOptions = {
-  'firstsection': (content) => {
+  'firstsection': (content, isMobile) => {
     const menuData = content.find(el => typeof el === 'object')
     const description = content.find(el => typeof el === 'string')
     return (
       <>
         <Navigation data={menuData}/>
         <div className={'center-content'}>
-          <img src={Logo.src} />
+          <Image src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
           <hr />
           <p>{description}</p>
           <hr />
@@ -34,16 +34,12 @@ const sectionOptions = {
               .center-content {
                 padding: 90px 0 0;
               }
-            }
-            img {
-              width: 100px;
-              height: 100px;
-            }
-            @media (min-width: 769px) {
-              img {
-                width: 180px;
-                height: 180px;
+              .center-content > hr:first-of-type {
+                margin-top: 20px;
               }
+            }
+            .center-content > hr:first-of-type {
+              margin-top: 30px;
             }
             span {
               font-family: 'Playfair Display', serif;
@@ -81,7 +77,7 @@ const sectionOptions = {
   'defaultsection': (content) => content[0].lang === 'html' && <div className={'center-content'} dangerouslySetInnerHTML={{__html: content[0].code}}/>
 }
 
-const getSectionContent = (type, content) => sectionOptions[type](content)
+const getSectionContent = (type, content, isMobile) => sectionOptions[type](content, isMobile)
 
 export default function SplitContainer({ data }: Props) {
   const [ isMobile, setIsMobile ] = useState(false)
@@ -101,7 +97,7 @@ export default function SplitContainer({ data }: Props) {
     return { type, img, content, color, leftalign }
   }, [validSection]);
 
-  const SectionContent = useMemo(() => getSectionContent(type, content), [type,content]);
+  const SectionContent = useMemo(() => getSectionContent(type, content, isMobile), [type, content, isMobile]);
 
   const updateSize = () => setIsMobile(window.innerWidth < 769 ? true : false)
   useEffect(() => {

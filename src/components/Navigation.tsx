@@ -45,6 +45,7 @@ export default function Navigation({ data }: Props) {
             position: absolute;
             user-select: none;
             pointer-events: none;
+            z-index: 1;
           }
           .active {
             user-select: auto;
