@@ -171,15 +171,6 @@ collections:
           widget: "boolean"
           default: true
           required: false
-        - label: "Menuu"
-          name: "menuu"
-          widget: "list"
-          summary: "{{fields.title}}"
-          required: false
-          field:
-            label: Menu itemm
-            name: menuitemm
-            widget: "string"
         - label: "Menu"
           name: "menu"
           widget: list
