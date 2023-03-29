@@ -197,7 +197,9 @@ collections:
           name: "img"
           widget: "image"
           required: false
-          allow_multiple: true
+          media_library:
+            config:
+              multiple: true
         - name: "color"
           label: "Color"
           widget: "color"
@@ -229,6 +231,7 @@ collections:
         - label: "Location"
           name: "location"
           widget: "map"
+          default: "GCH4+P4"
           required: false
       - name: "defaultsection"
         label: "Section with HTML option"
