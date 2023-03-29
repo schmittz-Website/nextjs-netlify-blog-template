@@ -171,6 +171,9 @@ collections:
           widget: "boolean"
           default: true
           required: false
+        - label: "Description"
+          name: "description"
+          widget: "string"
         - label: "Menu"
           name: "menu"
           widget: list
@@ -195,9 +198,6 @@ collections:
           name: "img"
           widget: "image"
           required: false
-          media_library:
-            config:
-              multiple: true
         - name: "color"
           label: "Color"
           widget: "color"
@@ -216,6 +216,24 @@ collections:
             label: Opening hour
             name: openinghour
             widget: "string"
+        - label: "Opening hours"
+          name: "openinghours"
+          widget: list
+          required: false
+          fields:
+            - label: Menu item
+              name: menuitem
+              widget: object
+              fields:
+              - label: Day
+                name: day
+                widget: string
+              - label: Hours
+                name: hours
+                widget: string
+        - label: "Location"
+          name: "location"
+          widget: "map"
       - name: "defaultsection"
         label: "Section with HTML option"
         widget: "object"
