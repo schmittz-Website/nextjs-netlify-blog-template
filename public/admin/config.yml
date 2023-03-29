@@ -162,6 +162,9 @@ collections:
           media_library:
             config:
               multiple: true
+        - name: 'color'
+          label: 'Color'
+          widget: 'color'
         - label: "Menu"
           name: "menu"
           widget: "list"
@@ -182,6 +185,9 @@ collections:
           media_library:
             config:
               multiple: true
+        - name: 'color'
+          label: 'Color'
+          widget: 'color'
         - label: "Opening hours"
           name: "openinghours"
           widget: "list"
@@ -202,6 +208,9 @@ collections:
           media_library:
             config:
               multiple: true
+        - name: 'color'
+          label: 'Color'
+          widget: 'color'
         - label: "Body"
           name: "body"
           widget: "code"
