@@ -229,11 +229,6 @@ collections:
               - label: Hours
                 name: hours
                 widget: string
-        - label: "Location"
-          name: "location"
-          widget: "map"
-          default: "GCH4+P4"
-          required: false
       - name: "defaultsection"
         label: "Section with HTML option"
         widget: "object"
