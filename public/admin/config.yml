@@ -182,14 +182,7 @@ collections:
           fields:
             - label: Menu item
               name: menuitem
-              widget: object
-              fields:
-              - label: Day
-                name: day
-                widget: string
-              - label: Hours
-                name: hours
-                widget: string
+              widget: string
       - name: "secondsection"
         label: "Section with contact information"
         widget: "object"
