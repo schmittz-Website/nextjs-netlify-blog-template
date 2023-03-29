@@ -1,13 +1,28 @@
+import { useMemo } from "react";
+import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
+import { SplitContainer } from "../components/home";
 import { SocialList } from "../components/SocialList";
+import { fetchHomeSections } from "../lib/homesections";
 
-export default function Index() {
+type Props = {
+  sections: any[];
+};
+
+const getHomeSections = sections => sections.map((section, idx) => {
+  return <SplitContainer data={section} key={idx} />
+})
+
+export default function Index({ sections }: Props) {
+  const HomeSections = useMemo(() => getHomeSections(sections).reverse(), [sections]);
+
   return (
     <Layout>
-      <BasicMeta url={"/"} />
+      {HomeSections}
+      {/* <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />
       <div className="container">
@@ -19,7 +34,7 @@ export default function Index() {
           <h2>A blog template with Next.js and Netlify...</h2>
           <SocialList />
         </div>
-      </div>
+      </div> */}
       <style jsx>{`
         .container {
           display: flex;
@@ -60,3 +75,12 @@ export default function Index() {
     </Layout>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const sections = fetchHomeSections();
+  return {
+    props: {
+      sections
+    },
+  };
+};

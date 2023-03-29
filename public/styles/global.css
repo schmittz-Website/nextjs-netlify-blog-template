@@ -1,13 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
 
 html,
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Helvetica', sans-serif;
+  line-height: 1.25;
   background-color: #fff;
-  color: #222;
+  color: #151513;
   font-weight: 200;
   height: 100%;
+  text-align: center;
 }
 
 #__next {
@@ -15,14 +16,14 @@ body {
 }
 
 a {
-  color: #9b9b9b;
+  color: #151513cc;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 a:active,
 a:hover {
-  color: #000;
+  color: #151513;
 }
 
 .youtube-container {
@@ -40,4 +41,55 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  /* text-shadow: 0 0 5px white, 0 0 10px white, 0 0 20px #ff7c00, 0 0 20px #ff7c00, 0 0 60px #ff7c00, 0 0 90px #ff7c00, 0 0 120px #ff7c00, 0 0 20px #ff7c00; */
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+ul, ol {
+  display: inline-block;
+  text-align: left;
+}
+
+table {
+  text-align: left;
+  margin: auto;
+}
+
+th, td {
+  padding-right: 10px;
+}
+
+hr {
+  width: 40%;
+  background: #FF820E;
+  height: 1px;
+  border: 0px;
+}
+
+.cover-img {
+  object-fit: cover;
+}
+
+.center-content {
+  width: 100%;
+  margin: auto 50px;
+  padding: 50px 0;
+}
+
+@media (min-width: 1440px) {
+  .center-content {
+    margin: auto 20%;
+    padding: 20% 0;
+  }
+}
+
+.center-content > *:not(:last-child) {
+  margin-bottom: 30px;
 }

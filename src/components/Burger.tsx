@@ -8,53 +8,51 @@ export default function Burger({ active, onClick }: Props) {
       <div className={"meat meat-1"} />
       <div className={"meat meat-2"} />
       <div className={"meat meat-3"} />
-      <style jsx>
-        {`
-          .container {
-            position: fixed;
-            width: 38px;
-            height: 38px;
-            cursor: pointer;
-            top: 1rem;
-            left: 1.25rem;
-            z-index: 2;
-            background-color: rgba(255, 255, 255, 0.7);
-          }
-          .meat {
-            position: absolute;
-            width: 28px;
-            height: 2px;
-            background: #222;
-            top: calc(50% - 2px / 2);
-            left: calc(50% - 28px / 2);
-            transition: all 150ms ease-in;
-          }
-          .meat-1 {
-            transform: translateY(-10px);
-          }
-          .meat-2 {
-            width: calc(28px - 6px);
-          }
-          .meat-3 {
-            transform: translateY(10px);
-          }
-          .active .meat-1 {
-            transform: rotate(45deg);
-          }
-          .active .meat-2 {
-            opacity: 0;
-          }
-          .active .meat-3 {
-            transform: rotate(-45deg);
-          }
-
-          @media (min-width: 769px) {
-            .container {
-              display: none;
-            }
-          }
-        `}
-      </style>
+      <p>{active ? "CLOSE" : "MENU"}</p>
+      <style jsx>{`
+        .container {
+          position: absolute;
+          width: 100%;
+          height: 68px;
+          cursor: pointer;
+          top: 1rem;
+          z-index: 2;
+        }
+        .meat {
+          position: absolute;
+          width: 48px;
+          height: 2px;
+          background: #222;
+          top: calc(50% - 2px / 2);
+          left: calc(50% - 48px / 2);
+          transition: all 150ms ease-in;
+        }
+        .meat-1 {
+          transform: translateY(-12px);
+        }
+        .meat-2 {
+          width: calc(48px - 6px);
+        }
+        .meat-3 {
+          transform: translateY(12px);
+        }
+        .active .meat-1 {
+          transform: rotate(45deg);
+        }
+        .active .meat-2 {
+          opacity: 0;
+        }
+        .active .meat-3 {
+          transform: rotate(-45deg);
+        }
+        p {
+          font-family: 'Playfair Display', serif;
+          position: absolute;
+          width: 100%;
+          top: 48px;
+          color: #FF820E;
+        }
+      `}</style>
     </div>
   );
 }
