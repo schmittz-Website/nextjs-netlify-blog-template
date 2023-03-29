@@ -167,7 +167,7 @@ collections:
           widget: "color"
           required: false
         - name: "leftalign"
-          label: "Left Align"  
+          label: "Image Left Align"  
           widget: "boolean"
           default: true
           required: false
@@ -177,7 +177,6 @@ collections:
         - label: "Menu"
           name: "menu"
           widget: list
-          summary: "Menu items"
           required: false
           fields:
             - label: Menu item
@@ -198,14 +197,19 @@ collections:
           name: "img"
           widget: "image"
           required: false
+          allow_multiple: true
         - name: "color"
           label: "Color"
           widget: "color"
           required: false
         - name: "leftalign"
-          label: "Left Align"  
+          label: "Image Left Align"  
           widget: "boolean"
           default: true
+          required: false
+        - label: "Address"
+          name: "address"
+          widget: "text"
           required: false
         - label: "Opening hours"
           name: "openinghours"
@@ -242,7 +246,7 @@ collections:
           widget: "color"
           required: false
         - name: "leftalign"
-          label: "Left Align"  
+          label: "Image Left Align"  
           widget: "boolean"
           default: true
           required: false
