@@ -180,6 +180,14 @@ collections:
             label: Menu item
             name: menuitem
             widget: "string"
+        - label: "Menuobject"
+          name: "menuobject"
+          widget: object
+          required: false
+          fields:
+            - label: Name
+              name: name
+              widget: string
       - name: "secondsection"
         label: "Section with contact information"
         widget: "object"
