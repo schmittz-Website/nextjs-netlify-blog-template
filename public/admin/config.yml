@@ -155,6 +155,13 @@ collections:
         label: "Section with logo and menu"
         widget: "object"
         fields:
+        - label: "First Image"
+          name: "img"
+          widget: "image"
+          required: false
+          media_library:
+            config:
+              multiple: true
         - label: "Menu"
           name: "menu"
           widget: "list"
@@ -164,17 +171,17 @@ collections:
             label: Menu item
             name: menuitem
             widget: "string"
-        - label: "First Image"
+      - name: "secondsection"
+        label: "Section with contact information"
+        widget: "object"
+        fields:
+        - label: "Second Image"
           name: "img"
           widget: "image"
           required: false
           media_library:
             config:
               multiple: true
-      - name: "secondsection"
-        label: "Section with contact information"
-        widget: "object"
-        fields:
         - label: "Opening hours"
           name: "openinghours"
           widget: "list"
@@ -184,21 +191,10 @@ collections:
             label: Opening hour
             name: openinghour
             widget: "string"
-        - label: "Second Image"
-          name: "img"
-          widget: "image"
-          required: false
-          media_library:
-            config:
-              multiple: true
       - name: "defaultsection"
         label: "Section with HTML option"
         widget: "object"
         fields:
-        - label: "Body"
-          name: "body"
-          widget: "code"
-          required: false
         - label: "Default Image"
           name: "img"
           widget: "image"
@@ -206,3 +202,7 @@ collections:
           media_library:
             config:
               multiple: true
+        - label: "Body"
+          name: "body"
+          widget: "code"
+          required: false
