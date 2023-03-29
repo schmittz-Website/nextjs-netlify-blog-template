@@ -185,9 +185,16 @@ collections:
           widget: object
           required: false
           fields:
-            - label: Name
-              name: name
-              widget: string
+            - label: Menu itemm
+              name: menuitemm
+              widget: object
+              fields:
+              - label: Day
+                name: day
+                widget: string
+              - label: Hours
+                name: hours
+                widget: string
       - name: "secondsection"
         label: "Section with contact information"
         widget: "object"
