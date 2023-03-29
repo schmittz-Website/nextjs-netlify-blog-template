@@ -162,9 +162,15 @@ collections:
           media_library:
             config:
               multiple: true
-        - name: 'color'
-          label: 'Color'
-          widget: 'color'
+        - name: "color"
+          label: "Color"
+          widget: "color"
+          required: false
+        - name: "leftalign",
+          label: "Left Align",  
+          widget: "boolean",
+          default: true
+          required: false
         - label: "Menu"
           name: "menu"
           widget: "list"
@@ -185,9 +191,15 @@ collections:
           media_library:
             config:
               multiple: true
-        - name: 'color'
-          label: 'Color'
-          widget: 'color'
+        - name: "color"
+          label: "Color"
+          widget: "color"
+          required: false
+        - name: "leftalign",
+          label: "Left Align",  
+          widget: "boolean",
+          default: true
+          required: false
         - label: "Opening hours"
           name: "openinghours"
           widget: "list"
@@ -208,9 +220,15 @@ collections:
           media_library:
             config:
               multiple: true
-        - name: 'color'
-          label: 'Color'
-          widget: 'color'
+        - name: "color"
+          label: "Color"
+          widget: "color"
+          required: false
+        - name: "leftalign",
+          label: "Left Align",  
+          widget: "boolean",
+          default: true
+          required: false
         - label: "Body"
           name: "body"
           widget: "code"
