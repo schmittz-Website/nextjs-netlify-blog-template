@@ -158,15 +158,12 @@ collections:
         label: "Section with logo and menu"
         widget: "object"
         fields:
-        - label: "First Image"
-          name: "img"
-          widget: "image"
         - label: "Images"
           name: "images"
           widget: list
           required: false
           fields:
-          - label: "Test Image"
+          - label: "Image"
             name: "image"
             widget: "image"
         - name: "color"
@@ -193,13 +190,14 @@ collections:
         label: "Section with contact information"
         widget: "object"
         fields:
-        - label: "Second Image"
-          name: "img"
-          widget: "image"
+        - label: "Images"
+          name: "images"
+          widget: list
           required: false
-          media_library:
-            config:
-              multiple: true
+          fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
         - name: "color"
           label: "Color"
           widget: "color"
@@ -232,13 +230,14 @@ collections:
         label: "Section with HTML option"
         widget: "object"
         fields:
-        - label: "Default Image"
-          name: "img"
-          widget: "image"
+        - label: "Images"
+          name: "images"
+          widget: list
           required: false
-          media_library:
-            config:
-              multiple: true
+          fields:
+          - label: "Image"
+            name: "image"
+            widget: "image"
         - name: "color"
           label: "Color"
           widget: "color"
