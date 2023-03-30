@@ -166,6 +166,7 @@ collections:
           - label: "Image"
             name: "image"
             widget: "image"
+            required: false
         - name: "color"
           label: "Color"
           widget: "color"
@@ -198,6 +199,7 @@ collections:
           - label: "Image"
             name: "image"
             widget: "image"
+            required: false
         - name: "color"
           label: "Color"
           widget: "color"
@@ -238,6 +240,7 @@ collections:
           - label: "Image"
             name: "image"
             widget: "image"
+            required: false
         - name: "color"
           label: "Color"
           widget: "color"
