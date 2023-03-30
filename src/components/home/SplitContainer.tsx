@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Navigation from "../Navigation";
 import Logo from "../../assets/logo.png";
+import config from "../../lib/config";
 
 type Props = {
   data: any;
@@ -16,17 +17,17 @@ const getOpeningHours = hours => hours.map((el, idx) => {
 })
 
 const sectionOptions = {
-  'firstsection': (content, isMobile) => {
+  'firstsection': (content, isMobile, color) => {
     const menuData = content.find(el => typeof el === 'object')
     const description = content.find(el => typeof el === 'string')
     return (
       <>
-        <Navigation data={menuData}/>
+        <Navigation data={menuData} color={color} />
         <div className={'center-content'}>
           <img src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
-          <hr />
+          <span className={'divider'} />
           <p>{description}</p>
-          <hr />
+          <span className={'divider'} />
           <span>Berlin</span>
           <style jsx>{`
             @media (max-width: 769px) {
@@ -50,9 +51,9 @@ const sectionOptions = {
       <>
         <div className={'center-content'}>
           <h2>KONTAKT</h2>
-          <hr />
+          <span className={'divider'} />
           <p>{contactInfo}</p>
-          <hr />
+          <span className={'divider'} />
           <table>
             <tbody>
               {getOpeningHours(openingHours)}
@@ -70,7 +71,7 @@ const sectionOptions = {
   'defaultsection': (content) => content[0].lang === 'html' && <div className={'center-content'} dangerouslySetInnerHTML={{__html: content[0].code}}/>
 }
 
-const getSectionContent = (type, content, isMobile) => sectionOptions[type](content, isMobile)
+const getSectionContent = (type, content, isMobile, color) => sectionOptions[type](content, isMobile, color)
 
 export default function SplitContainer({ data }: Props) {
   const [ isMobile, setIsMobile ] = useState(false)
@@ -90,7 +91,7 @@ export default function SplitContainer({ data }: Props) {
     return { type, img, content, color, leftalign }
   }, [validSection]);
 
-  const SectionContent = useMemo(() => getSectionContent(type, content, isMobile), [type, content, isMobile]);
+  const SectionContent = useMemo(() => getSectionContent(type, content, isMobile, color), [type, content, isMobile, color]);
 
   const updateSize = () => setIsMobile(window.innerWidth < 769 ? true : false)
   useEffect(() => {
@@ -105,7 +106,7 @@ export default function SplitContainer({ data }: Props) {
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <img src={img} className={'cover-img'}/>
       </div>
-      <div className={'text-wrapper'} style={{ backgroundColor: color }}>
+      <div className={'text-wrapper'} style={{ backgroundColor: config.darktheme ? 'var(--black)' : color }}>
         {SectionContent}
       </div>
       <style jsx>{`

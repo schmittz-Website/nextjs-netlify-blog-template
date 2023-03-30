@@ -1,19 +1,25 @@
 import { useState, useMemo } from "react";
 import Burger from "./Burger";
+import config from "../lib/config";
 
 type Props = {
   data: any;
+  color: string;
 };
 
-const getMenuItems = (data) => data.map((el, idx) => {
+const getMenuItems = (data, config) => data.map((el, idx) => {
   return (
-    <li key={idx}>
+    <li key={idx} className={config.darktheme ? "dark" : ""}>
       <a href={''}>{el.menuitem}</a>
       <style jsx>{`
         li {
           font-family: 'Playfair Display', serif;
           margin-bottom: 1.75rem;
           font-size: 1.5rem;
+        }
+
+        .dark a {
+          color: var(--white);
         }
 
         &:last-child {
@@ -24,19 +30,19 @@ const getMenuItems = (data) => data.map((el, idx) => {
   )
 })
 
-export default function Navigation({ data }: Props) {
+export default function Navigation({ data, color }: Props) {
   const [active, setActive] = useState(false);
 
-  const MenuItems = useMemo(() => getMenuItems(data), [data])
+  const MenuItems = useMemo(() => getMenuItems(data, config), [data, config])
   
   return (
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
       <nav className={"container " + (active ? "active" : "")}>
-        <ul>
-          <hr />
+        <ul style={config.darktheme ? {backgroundColor: 'var(--black)'}: {backgroundColor: color}}>
+          <span className={'divider'} />
             {MenuItems}
-          <hr />
+          <span className={'divider'} />
         </ul>
         <style jsx>{`
           nav {
@@ -60,7 +66,6 @@ export default function Navigation({ data }: Props) {
             margin: 0;
             padding: 0;
             top: 0;
-            background-color: #fbf9f9;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -74,6 +79,9 @@ export default function Navigation({ data }: Props) {
           }
           hr:first-of-type {
             margin-bottom: 1.75rem;
+          }
+          .divider:not(:last-of-type) {
+            margin-bottom: 30px;
           }
         `}</style>
       </nav>
