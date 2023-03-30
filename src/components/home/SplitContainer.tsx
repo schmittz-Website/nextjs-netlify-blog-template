@@ -79,11 +79,11 @@ export default function SplitContainer({ data }: Props) {
     return { type: sectionKey, ...data[sectionKey] }
   }, [data]);
 
-  const { img, content, type, color, leftalign } = useMemo(() => {
-    const { type, img, color, leftalign } = validSection
+  const { images, content, type, color, leftalign } = useMemo(() => {
+    const { type, images, color, leftalign } = validSection
     const contentKeys = Object.keys(validSection).filter(key => key !== 'type' && key !== 'img' && key !== 'color' && key !== 'leftalign')
     const content = contentKeys.map(key => validSection[key])
-    return { type, img, content, color, leftalign }
+    return { type, images, content, color, leftalign }
   }, [validSection]);
 
   const SectionContent = useMemo(() => getSectionContent(type, content, isMobile, color), [type, content, isMobile, color]);
@@ -100,7 +100,7 @@ export default function SplitContainer({ data }: Props) {
     <div className={`container ${type}`}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <div className={'inner-container'}>
-          <img src={img} className={'cover-img'}/>
+          {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}
         </div>
       </div>
       <div className={'text-wrapper'} style={{ backgroundColor: config.darktheme ? 'var(--black)' : color }}>
