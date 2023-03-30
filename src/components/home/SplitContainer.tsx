@@ -30,11 +30,6 @@ const sectionOptions = {
           <span className={'divider'} />
           <span>Berlin</span>
           <style jsx>{`
-            @media (max-width: 769px) {
-              .center-content {
-                padding: 90px 0 0;
-              }
-            }
             span {
               font-family: 'Playfair Display', serif;
               font-style: italic;
@@ -104,41 +99,69 @@ export default function SplitContainer({ data }: Props) {
   return (
     <div className={`container ${type}`}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
-        <img src={img} className={'cover-img'}/>
+        <div className={'inner-container'}>
+          <img src={img} className={'cover-img'}/>
+        </div>
       </div>
       <div className={'text-wrapper'} style={{ backgroundColor: config.darktheme ? 'var(--black)' : color }}>
-        {SectionContent}
+        <div className={'inner-container'}>
+          {SectionContent}
+        </div>
       </div>
       <style jsx>{`
         .container {
-          height: 100vh;
+          min-height: 100vh;
           width: 100%;
           display: grid;
-          grid-template-rows: 2fr 1fr;
         }
 
         .image-wrapper,
         .text-wrapper {
           display: flex;
-          overflow: scroll;
-        }
-
-        .firstsection .text-wrapper {
-          overflow: hidden;
-        }
-
-        .image-wrapper {
-          position: relative;
         }
 
         .text-wrapper {
-          position: relative;
+          flex-flow: column;
+        }
+
+        .image-wrapper {
+          overflow: scroll;
+        }
+
+        .image-wrapper img {
+          height: 50vh;
+          width: 80%;
+        }
+
+        .image-wrapper img:only-child {
+          width: 100%;
+        }
+
+        .inner-container {
+          display: contents;
+          position: sticky;
+          top: 0;
         }
 
         @media (min-width: 769px) {
           .container {
             grid-template-rows: unset;
             grid-template-columns: 1fr 1fr;
+          }
+
+          .inner-container {
+            display: block;
+          }
+
+          .image-wrapper {
+            flex-flow: column;
+            overflow: unset;
+          }
+
+          .image-wrapper img,
+          .image-wrapper img:only-child {
+            height: 100vh;
+            width: 50vw;
           }
         }
       `}</style>
