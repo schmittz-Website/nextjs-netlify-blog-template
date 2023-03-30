@@ -161,10 +161,14 @@ collections:
         - label: "First Image"
           name: "img"
           widget: "image"
+        - label: "Images"
+          name: "images"
+          widget: list
           required: false
-          media_library:
-            config:
-              multiple: true
+          fields:
+          - label: "Test Image"
+            name: "image"
+            widget: "image"
         - name: "color"
           label: "Color"
           widget: "color"
