@@ -143,6 +143,24 @@ collections:
         name: "body"
         widget: "markdown"
 
+  - name: "menu"
+    label: "Menu"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "general"
+        label: "Site Config"
+        file: "config.json"
+        description: "General site settings"
+        fields:
+        - label: "Menu Items"
+          name: "menuitems"
+          widget: "relation"
+          collection: "homepage"
+          search_fields: ["name"]
+          value_field: "name"
+  
   - name: "homepage"
     label: "Homepage"
     title: "Homepage"
@@ -151,8 +169,8 @@ collections:
     format: "frontmatter"
     create: true
     fields:
-      - label: Title
-        name: title
+      - name: title 
+        label: Title
         widget: string
       - name: "firstsection"
         label: "Section with logo and menu"
