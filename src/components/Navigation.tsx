@@ -40,7 +40,7 @@ export default function Navigation({ data, color }: Props) {
     const nodes = document.querySelectorAll('.split-container[id][data-name]')
     const [, ...rest] = Array.from(nodes).map(node => {
       return { 
-        'name': node.dataset.name,
+        'name': (node as HTMLElement).dataset.name,
         'anchor': node.id
       }
     })
