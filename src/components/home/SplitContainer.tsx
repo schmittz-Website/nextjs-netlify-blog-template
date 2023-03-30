@@ -22,7 +22,7 @@ const sectionOptions = {
     const description = content.find(el => typeof el === 'string')
     return (
       <>
-        <Navigation data={menuData} color={color} />
+        <Navigation data={menuData} color={color} />
         <div className={'center-content'}>
           <img src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
           <span className={'divider'} />
@@ -103,7 +103,7 @@ export default function SplitContainer({ data }: Props) {
           {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}
         </div>
       </div>
-      <div className={'text-wrapper'} style={{ backgroundColor: config.darktheme ? 'var(--black)' : color }}>
+      <div className={'text-wrapper'} style={{ backgroundColor: config.lighttheme ? 'var(--white)' : 'var(--black)' }}>
         <div className={'inner-container'}>
           {SectionContent}
         </div>

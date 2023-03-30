@@ -9,7 +9,7 @@ type Props = {
 
 const getMenuItems = (data, config) => data.map((el, idx) => {
   return (
-    <li key={idx} className={config.darktheme ? "dark" : ""}>
+    <li key={idx} className={config.lighttheme ? "light" : ""}>
       <a href={''}>{el.menuitem}</a>
       <style jsx>{`
         li {
@@ -18,8 +18,8 @@ const getMenuItems = (data, config) => data.map((el, idx) => {
           font-size: 1.5rem;
         }
 
-        .dark a {
-          color: var(--white);
+        .light a {
+          color: var(--black);
         }
 
         &:last-child {
@@ -39,7 +39,7 @@ export default function Navigation({ data, color }: Props) {
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
       <nav className={"container " + (active ? "active" : "")}>
-        <ul style={config.darktheme ? {backgroundColor: 'var(--black)'}: {backgroundColor: color}}>
+        <ul style={config.lighttheme ? {backgroundColor: 'var(--white)'}: {backgroundColor: 'var(--black)'}}>
           <span className={'divider'} />
             {MenuItems}
           <span className={'divider'} />

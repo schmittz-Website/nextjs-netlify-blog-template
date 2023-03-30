@@ -41,8 +41,8 @@ collections:
           - label: "GitHub account"
             name: "github_account"
             widget: "string"
-          - name: "darktheme"
-            label: "Dark theme"  
+          - name: "lighttheme"
+            label: "Light theme"  
             widget: "boolean"
 
   - name: "meta"
@@ -160,6 +160,7 @@ collections:
           collection: "homepage"
           search_fields: ["name"]
           value_field: "name"
+          display_fields: ["name"]
   
   - name: "homepage"
     label: "Homepage"

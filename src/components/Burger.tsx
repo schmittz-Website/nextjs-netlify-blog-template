@@ -6,7 +6,7 @@ type Props = {
 };
 export default function Burger({ active, onClick }: Props) {
   return (
-    <div className={"container " + (active ? "active " : "") + (config.darktheme ? "dark " : "")} onClick={onClick}>
+    <div className={"container " + (active ? "active " : "") + (config.lighttheme ? "light " : "")} onClick={onClick}>
       <div className={"meat meat-1"} />
       <div className={"meat meat-2"} />
       <div className={"meat meat-3"} />
@@ -24,13 +24,13 @@ export default function Burger({ active, onClick }: Props) {
           position: absolute;
           width: 48px;
           height: 2px;
-          background: var(--black);
+          background: var(--white);
           top: calc(50% - 2px / 2);
           left: calc(50% - 48px / 2);
           transition: all 150ms ease-in;
         }
-        .dark .meat {
-          background: var(--white);
+        .light .meat {
+          background: var(--black);
         }
         .meat-1 {
           transform: translateY(-12px);
