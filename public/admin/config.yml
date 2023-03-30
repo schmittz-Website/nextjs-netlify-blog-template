@@ -151,6 +151,9 @@ collections:
     format: "frontmatter"
     create: true
     fields:
+      - label: Title
+        name: title
+        widget: string
       - name: "firstsection"
         label: "Section with logo and menu"
         widget: "object"
