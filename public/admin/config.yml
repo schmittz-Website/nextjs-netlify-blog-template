@@ -179,14 +179,6 @@ collections:
           name: "description"
           widget: "string"
           required: false
-        - label: "Menu"
-          name: "menu"
-          widget: list
-          required: false
-          fields:
-            - label: Menu item
-              name: menuitem
-              widget: string
       - name: "secondsection"
         label: "Section with contact information"
         widget: "object"
