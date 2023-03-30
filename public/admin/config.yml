@@ -41,6 +41,9 @@ collections:
           - label: "GitHub account"
             name: "github_account"
             widget: "string"
+          - name: "theme"
+            label: "Dark theme"  
+            widget: "boolean"
 
   - name: "meta"
     label: "Meta"
@@ -148,10 +151,6 @@ collections:
     format: "frontmatter"
     create: true
     fields:
-      - name: "theme"
-        label: "Dark theme"  
-        widget: "boolean"
-        required: false
       - name: "firstsection"
         label: "Section with logo and menu"
         widget: "object"
