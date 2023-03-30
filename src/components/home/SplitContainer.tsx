@@ -150,7 +150,7 @@ export default function SplitContainer({ data }: Props) {
           }
 
           .inner-container {
-            display: block;
+            display: grid;
           }
 
           .image-wrapper {
