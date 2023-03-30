@@ -41,7 +41,7 @@ collections:
           - label: "GitHub account"
             name: "github_account"
             widget: "string"
-          - name: "theme"
+          - name: "darktheme"
             label: "Dark theme"  
             widget: "boolean"
 
