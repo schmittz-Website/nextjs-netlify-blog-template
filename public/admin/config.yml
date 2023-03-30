@@ -142,24 +142,6 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
-
-  - name: "menu"
-    label: "Menu"
-    delete: false
-    editor:
-      preview: false
-    files:
-      - name: "config"
-        label: "Menu Config"
-        file: "menu.json"
-        fields:
-        - label: "Menu Items"
-          name: "menuitems"
-          widget: "relation"
-          collection: "homepage"
-          search_fields: ["name"]
-          value_field: "name.label"
-          display_fields: ["name.label"]
   
   - name: "homepage"
     label: "Homepage"
