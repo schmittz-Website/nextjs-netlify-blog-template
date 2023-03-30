@@ -149,18 +149,17 @@ collections:
     editor:
       preview: false
     files:
-      - name: "general"
-        label: "Site Config"
-        file: "config.json"
-        description: "General site settings"
+      - name: "config"
+        label: "Menu Config"
+        file: "menu.json"
         fields:
         - label: "Menu Items"
           name: "menuitems"
           widget: "relation"
           collection: "homepage"
           search_fields: ["name"]
-          value_field: "name"
-          display_fields: ["name"]
+          value_field: "name.label"
+          display_fields: ["name.label"]
   
   - name: "homepage"
     label: "Homepage"
