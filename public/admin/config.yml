@@ -143,9 +143,9 @@ collections:
         name: "body"
         widget: "markdown"
   
-  - name: "homepage"
-    label: "Homepage"
-    title: "Homepage"
+  - name: "content"
+    label: "Content"
+    title: "Content"
     folder: "content/home/"
     extension: "mdx"
     format: "frontmatter"
@@ -245,4 +245,22 @@ collections:
         - label: "Body"
           name: "body"
           widget: "code"
+          required: false
+
+  - name: "impressum"
+    label: "Impressum"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - name: "config"
+        label: "Impressum Config"
+        file: "impressum.json"
+        fields:
+        - name: title 
+          label: Title
+          widget: string
+        - name: "text"
+          label: "Text"
+          widget: "text"
           required: false
