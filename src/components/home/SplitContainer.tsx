@@ -97,19 +97,19 @@ export default function SplitContainer({ data }: Props) {
   }, [])
 
   return (
-    <div className={`container ${type}`}>
+    <div className={`split-container ${type}`} id={data.title.split(' ')[0].toLowerCase()} data-name={data.title}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <div className={'inner-container'}>
           {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}
         </div>
       </div>
-      <div className={'text-wrapper'} style={{ backgroundColor: config.lighttheme ? 'var(--white)' : 'var(--black)' }}>
+      <div className={'text-wrapper'} style={{ backgroundColor: config.lighttheme ? 'var(--white)' : color }}>
         <div className={'inner-container'}>
           {SectionContent}
         </div>
       </div>
       <style jsx>{`
-        .container {
+        .split-container {
           min-height: 100vh;
           width: 100%;
           display: grid;
@@ -144,7 +144,7 @@ export default function SplitContainer({ data }: Props) {
         }
 
         @media (min-width: 769px) {
-          .container {
+          .split-container {
             grid-template-rows: unset;
             grid-template-columns: 1fr 1fr;
           }

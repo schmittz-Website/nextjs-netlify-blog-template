@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Burger from "./Burger";
 import config from "../lib/config";
 
@@ -7,10 +7,10 @@ type Props = {
   color: string;
 };
 
-const getMenuItems = (data, config) => data.map((el, idx) => {
+const getMenuItems = (menuItems, config) => menuItems.map((el, idx) => {
   return (
     <li key={idx} className={config.lighttheme ? "light" : ""}>
-      <a href={''}>{el.menuitem}</a>
+      <a href={el.link ?? `#${el.anchor}`}>{el.name}</a>
       <style jsx>{`
         li {
           font-family: 'Playfair Display', serif;
@@ -32,14 +32,26 @@ const getMenuItems = (data, config) => data.map((el, idx) => {
 
 export default function Navigation({ data, color }: Props) {
   const [active, setActive] = useState(false);
+  const [menuItems, setMenuItems] = useState([]);
 
-  const MenuItems = useMemo(() => getMenuItems(data, config), [data, config])
+  const MenuItems = useMemo(() => getMenuItems(menuItems, config), [menuItems, config])
+
+  useEffect(() => {
+    const nodes = document.querySelectorAll('.split-container[id][data-name]')
+    const [, ...rest] = Array.from(nodes).map(node => {
+      return { 
+        'name': node.dataset.name,
+        'anchor': node.id
+      }
+    })
+    setMenuItems([...rest, { 'name': 'Impressum', 'link': '/impressum' }])
+  }, [data])
   
   return (
     <>
       <Burger active={active} onClick={() => setActive(!active)} />
       <nav className={"container " + (active ? "active" : "")}>
-        <ul style={config.lighttheme ? {backgroundColor: 'var(--white)'}: {backgroundColor: 'var(--black)'}}>
+        <ul style={config.lighttheme ? {backgroundColor: 'var(--white)'}: {backgroundColor: color}}>
           <span className={'divider'} />
             {MenuItems}
           <span className={'divider'} />
