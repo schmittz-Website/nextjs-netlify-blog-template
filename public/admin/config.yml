@@ -179,10 +179,17 @@ collections:
           name: "description"
           widget: "string"
           required: false
+        - label: "Subline"
+          name: "subline"
+          widget: "string"
+          required: false
       - name: "secondsection"
         label: "Section with contact information"
         widget: "object"
         fields:
+        - name: "title"
+          label: "Title"
+          widget: string
         - label: "Images"
           name: "images"
           widget: list
@@ -228,6 +235,7 @@ collections:
         - name: "defaultsection"
           label: "Section with HTML option"
           widget: "object"
+          required: false
           fields:
           - label: "Images"
             name: "images"
