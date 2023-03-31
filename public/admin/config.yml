@@ -158,6 +158,9 @@ collections:
         label: "Section with logo and menu"
         widget: "object"
         fields:
+        - name: "title"
+          label: "Title"
+          widget: string
         - label: "Images"
           name: "images"
           widget: list
@@ -237,6 +240,9 @@ collections:
           widget: "object"
           required: false
           fields:
+          - name: "title"
+            label: "Title"
+            widget: string
           - label: "Images"
             name: "images"
             widget: list
