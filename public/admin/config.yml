@@ -143,9 +143,9 @@ collections:
         name: "body"
         widget: "markdown"
   
-  - name: "content"
-    label: "Content"
-    title: "Content"
+  - name: "homepage"
+    label: "Homepage"
+    title: "Homepage"
     folder: "content/home/"
     extension: "mdx"
     format: "frontmatter"
@@ -220,32 +220,37 @@ collections:
               - label: Hours
                 name: hours
                 widget: string
-      - name: "defaultsection"
-        label: "Section with HTML option"
-        widget: "object"
+      - name: "default"
+        label: "Default Section List"
+        widget: list
+        required: false
         fields:
-        - label: "Images"
-          name: "images"
-          widget: list
-          required: false
+        - name: "defaultsection"
+          label: "Section with HTML option"
+          widget: "object"
           fields:
-          - label: "Image"
-            name: "image"
-            widget: "image"
+          - label: "Images"
+            name: "images"
+            widget: list
             required: false
-        - name: "color"
-          label: "Color"
-          widget: "color"
-          required: false
-        - name: "leftalign"
-          label: "Image Left Align"  
-          widget: "boolean"
-          default: true
-          required: false
-        - label: "Body"
-          name: "body"
-          widget: "code"
-          required: false
+            fields:
+            - label: "Image"
+              name: "image"
+              widget: "image"
+              required: false
+          - name: "color"
+            label: "Color"
+            widget: "color"
+            required: false
+          - name: "leftalign"
+            label: "Image Left Align"  
+            widget: "boolean"
+            default: true
+            required: false
+          - label: "Body"
+            name: "body"
+            widget: "code"
+            required: false
 
   - name: "impressum"
     label: "Impressum"
