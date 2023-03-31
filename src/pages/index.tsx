@@ -12,12 +12,24 @@ type Props = {
   sections: any[];
 };
 
-const getHomeSections = sections => sections.map((section, idx) => {
-  return <SplitContainer data={section} key={idx} />
-})
+const getHomeSections = sections => {
+  const validSection = () => {
+    const sectionKeys = Object.keys(sections).filter(key => {
+      const validKey = key === 'firstsection' || key === 'secondsection'
+      if(validKey && Object.keys(sections[key]).length > 1) return key;
+    })
+    return sectionKeys.map(sectionKey => ({ type: sectionKey, ...sections[sectionKey] }))
+  }
+  const defaultSection = () => sections.default.map(section => ({ type: 'defaultsection', ...section.defaultsection }))
+
+  const mergedArray = [...validSection(), ...defaultSection()]
+  return mergedArray.map((section, idx) => {
+    return <SplitContainer data={section} key={idx} />
+  })
+}
 
 export default function Index({ sections }: Props) {
-  const HomeSections = useMemo(() => getHomeSections(sections).reverse(), [sections]);
+  const HomeSections = useMemo(() => getHomeSections(sections[0]), [sections]);
 
   return (
     <Layout>

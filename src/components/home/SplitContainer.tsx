@@ -39,13 +39,13 @@ const sectionOptions = {
       </>
     )
   },
-  'secondsection': (content) => {
+  'secondsection': (content, title) => {
     const openingHours = content.find(el => typeof el === 'object')
     const contactInfo = content.find(el => typeof el === 'string')
     return (
       <>
         <div className={'center-content'}>
-          <h2>KONTAKT</h2>
+          <h2>{title}</h2>
           <span className={'divider'} />
           <p>{contactInfo}</p>
           <span className={'divider'} />
@@ -70,21 +70,13 @@ const getSectionContent = (type, content, isMobile, color) => sectionOptions[typ
 
 export default function SplitContainer({ data }: Props) {
   const [ isMobile, setIsMobile ] = useState(false)
-
-  const validSection = useMemo(() => {
-    const sectionKey = Object.keys(data).find(key => {
-      const validKey = key === 'firstsection' || key === 'secondsection' || key === 'defaultsection'
-      if(validKey && Object.keys(data[key]).length > 1) return key;
-    })
-    return { type: sectionKey, ...data[sectionKey] }
-  }, [data]);
-
+ 
   const { images, content, type, color, leftalign } = useMemo(() => {
-    const { type, images, color, leftalign } = validSection
-    const contentKeys = Object.keys(validSection).filter(key => key !== 'type' && key !== 'img' && key !== 'color' && key !== 'leftalign')
-    const content = contentKeys.map(key => validSection[key])
+    const { type, images, color, leftalign } = data
+    const contentKeys = Object.keys(data).filter(key => key !== 'type' && key !== 'images' && key !== 'color' && key !== 'leftalign')
+    const content = contentKeys.map(key => data[key])
     return { type, images, content, color, leftalign }
-  }, [validSection]);
+  }, [data]);
 
   const SectionContent = useMemo(() => getSectionContent(type, content, isMobile, color), [type, content, isMobile, color]);
 
@@ -97,7 +89,8 @@ export default function SplitContainer({ data }: Props) {
   }, [])
 
   return (
-    <div className={`split-container ${type}`} id={data.title.split(' ')[0].toLowerCase()} data-name={data.title}>
+    <div className={`split-container ${type}`} id={data.title.replace(/\s/g, "").toLowerCase()} data-name={data.title}>
+    {/* <div className={`split-container ${type}`} id={''} data-name={data.title}> */}
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <div className={'inner-container'}>
           {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}
