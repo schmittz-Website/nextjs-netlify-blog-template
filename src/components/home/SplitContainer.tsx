@@ -18,16 +18,16 @@ const getOpeningHours = hours => hours.map((el, idx) => {
 
 const sectionOptions = {
   'firstsection': (content, isMobile, color) => {
-
+    const { description, subline } = content
     return (
       <>
         <Navigation color={color} />
         <div className={'center-content'}>
           <img src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
           <span className={'divider'} />
-          <p>{content.description}</p>
+          <p>{description}</p>
           <span className={'divider'} />
-          <span>Berlin</span>
+          <span>{subline}</span>
           <style jsx>{`
             span {
               font-family: 'Playfair Display', serif;
@@ -40,7 +40,6 @@ const sectionOptions = {
   },
   'secondsection': (content) => {
     const { title, address, openinghours } = content
-
     return (
       <div className={'center-content'}>
         <h2>{title}</h2>
