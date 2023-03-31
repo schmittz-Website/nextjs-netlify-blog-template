@@ -46,11 +46,11 @@ const sectionOptions = {
         <span className={'divider'} />
         <p>{address}</p>
         <span className={'divider'} />
-        <table>
+        {openinghours && <table>
           <tbody>
             {getOpeningHours(openinghours)}
           </tbody>
-        </table>
+        </table>}
         <style jsx>{`
           p {
             white-space: break-spaces;
