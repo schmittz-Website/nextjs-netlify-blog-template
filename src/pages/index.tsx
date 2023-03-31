@@ -1,10 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { GetStaticProps } from "next";
 import Layout from "../components/Layout";
 import BasicMeta from "../components/meta/BasicMeta";
 import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
-import { SplitContainer } from "../components/home";
+import { SplitContainer, ScrollTop } from "../components/home";
 import { SocialList } from "../components/SocialList";
 import { fetchHomeSections } from "../lib/homesections";
 
@@ -12,7 +12,7 @@ type Props = {
   sections: any[];
 };
 
-const getHomeSections = sections => {
+const getHomeSections = (sections, setShowArrow) => {
   const validSection = () => {
     const validKeys = ['firstsection', 'secondsection']
     return validKeys.map(sectionKey => ({ type: sectionKey, ...sections[sectionKey] }))
@@ -21,16 +21,19 @@ const getHomeSections = sections => {
 
   const mergedArray = [...validSection(), ...defaultSection()]
   return mergedArray.map((section, idx) => {
-    return <SplitContainer data={section} key={idx} />
+    return <SplitContainer data={section} key={idx} setShowArrow={setShowArrow} />
   })
 }
 
 export default function Index({ sections }: Props) {
-  const HomeSections = useMemo(() => getHomeSections(sections[0]), [sections]);
+  const [showArrow, setShowArrow] = useState(false)
+
+  const HomeSections = useMemo(() => getHomeSections(sections[0], setShowArrow), [sections]);
 
   return (
     <Layout>
       {HomeSections}
+      <ScrollTop showArrow={showArrow} />
       {/* <BasicMeta url={"/"} />
       <OpenGraphMeta url={"/"} />
       <TwitterCardMeta url={"/"} />

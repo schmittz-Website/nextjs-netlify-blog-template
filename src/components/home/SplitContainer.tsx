@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
+import { useInView } from 'react-intersection-observer';
 import Navigation from "../Navigation";
 import Logo from "../../assets/logo.png";
 import config from "../../lib/config";
 
 type Props = {
   data: any;
+  setShowArrow: any;
 };
 
 const getOpeningHours = hours => hours.map((el, idx) => {
@@ -19,7 +21,7 @@ const getOpeningHours = hours => hours.map((el, idx) => {
 const sectionOptions = {
   'firstsection': (content, isMobile, color) => {
     const { description, subline } = content
-    return (
+    return (description && subline) && (
       <>
         <Navigation color={color} />
         <div className={'center-content'}>
@@ -40,7 +42,7 @@ const sectionOptions = {
   },
   'secondsection': (content) => {
     const { title, address, openinghours } = content
-    return (
+    return (address && openinghours) && (
       <div className={'center-content'}>
         <h2>{title}</h2>
         <span className={'divider'} />
@@ -64,8 +66,12 @@ const sectionOptions = {
 
 const getSectionContent = (type, content, isMobile, color) => sectionOptions[type](content, isMobile, color)
 
-export default function SplitContainer({ data }: Props) {
+export default function SplitContainer({ data, setShowArrow }: Props) {
   const [ isMobile, setIsMobile ] = useState(false)
+  const { ref, inView } = useInView({
+    threshold: 0.4,
+    initialInView: true
+  })
  
   const { images, content, type, color, leftalign } = useMemo(() => {
     const { type, images, color, leftalign } = data
@@ -85,8 +91,12 @@ export default function SplitContainer({ data }: Props) {
     return () => window.removeEventListener("resize", updateSize);
   }, [])
 
+  useEffect(() => {
+    setShowArrow(!inView)
+  }, [inView])
+
   return (
-    <div className={`split-container ${type}`} id={data.title.replace(/\s/g, "").toLowerCase()} data-name={data.title}>
+    <div ref={type === 'firstsection' ? ref : null} className={`split-container ${type}`} id={data.title.replace(/\s/g, "").toLowerCase()} data-name={data.title}>
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <div className={'inner-container'}>
           {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}

@@ -15,12 +15,26 @@ export default function Layout({ children }: Props) {
         <meta name="theme-color" content="#fff" />
       </Head>
       <main>{children}</main>
+      <footer>
+        <p>© 2023, Schmittz</p>
+      </footer>
       <style jsx>{`
         .root {
           color: var(--white);
         }
         .root.light {
           color: var(--black);
+        }
+        footer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        }
+        footer p {
+          font-family: 'Playfair Display', serif;
+          font-size: 13px;
+          color: var(--orange);
         }
       `}</style>
     </div>
