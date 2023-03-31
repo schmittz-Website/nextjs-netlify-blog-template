@@ -3,7 +3,6 @@ import Burger from "./Burger";
 import config from "../lib/config";
 
 type Props = {
-  data: any;
   color: string;
 };
 
@@ -30,7 +29,7 @@ const getMenuItems = (menuItems, config) => menuItems.map((el, idx) => {
   )
 })
 
-export default function Navigation({ data, color }: Props) {
+export default function Navigation({ color }: Props) {
   const [active, setActive] = useState(false);
   const [menuItems, setMenuItems] = useState([]);
 
@@ -45,7 +44,7 @@ export default function Navigation({ data, color }: Props) {
       }
     })
     setMenuItems([...rest, { 'name': 'Impressum', 'link': '/impressum' }])
-  }, [data])
+  }, [])
   
   return (
     <>

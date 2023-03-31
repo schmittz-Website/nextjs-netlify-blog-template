@@ -14,11 +14,8 @@ type Props = {
 
 const getHomeSections = sections => {
   const validSection = () => {
-    const sectionKeys = Object.keys(sections).filter(key => {
-      const validKey = key === 'firstsection' || key === 'secondsection'
-      if(validKey && Object.keys(sections[key]).length > 1) return key;
-    })
-    return sectionKeys.map(sectionKey => ({ type: sectionKey, ...sections[sectionKey] }))
+    const validKeys = ['firstsection', 'secondsection']
+    return validKeys.map(sectionKey => ({ type: sectionKey, ...sections[sectionKey] }))
   }
   const defaultSection = () => sections.default.map(section => ({ type: 'defaultsection', ...section.defaultsection }))
 

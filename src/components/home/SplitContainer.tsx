@@ -18,15 +18,14 @@ const getOpeningHours = hours => hours.map((el, idx) => {
 
 const sectionOptions = {
   'firstsection': (content, isMobile, color) => {
-    const menuData = content.find(el => typeof el === 'object')
-    const description = content.find(el => typeof el === 'string')
+
     return (
       <>
-        <Navigation data={menuData} color={color} />
+        <Navigation color={color} />
         <div className={'center-content'}>
           <img src={Logo.src} width={isMobile ? 100 : Logo.width} height={isMobile ? 100 : Logo.height}/>
           <span className={'divider'} />
-          <p>{description}</p>
+          <p>{content.description}</p>
           <span className={'divider'} />
           <span>Berlin</span>
           <style jsx>{`
@@ -39,31 +38,29 @@ const sectionOptions = {
       </>
     )
   },
-  'secondsection': (content, title) => {
-    const openingHours = content.find(el => typeof el === 'object')
-    const contactInfo = content.find(el => typeof el === 'string')
+  'secondsection': (content) => {
+    const { title, address, openinghours } = content
+
     return (
-      <>
-        <div className={'center-content'}>
-          <h2>{title}</h2>
-          <span className={'divider'} />
-          <p>{contactInfo}</p>
-          <span className={'divider'} />
-          <table>
-            <tbody>
-              {getOpeningHours(openingHours)}
-            </tbody>
-          </table>
-          <style jsx>{`
-            p {
-              white-space: break-spaces;
-            }
-          `}</style>
-        </div>
-      </>
+      <div className={'center-content'}>
+        <h2>{title}</h2>
+        <span className={'divider'} />
+        <p>{address}</p>
+        <span className={'divider'} />
+        <table>
+          <tbody>
+            {getOpeningHours(openinghours)}
+          </tbody>
+        </table>
+        <style jsx>{`
+          p {
+            white-space: break-spaces;
+          }
+        `}</style>
+      </div>
     )
   },
-  'defaultsection': (content) => content[0].lang === 'html' && <div className={'center-content'} dangerouslySetInnerHTML={{__html: content[0].code}}/>
+  'defaultsection': (content) => content.body.lang === 'html' && <div className={'center-content'} dangerouslySetInnerHTML={{__html: content.body.code}}/>
 }
 
 const getSectionContent = (type, content, isMobile, color) => sectionOptions[type](content, isMobile, color)
@@ -74,7 +71,8 @@ export default function SplitContainer({ data }: Props) {
   const { images, content, type, color, leftalign } = useMemo(() => {
     const { type, images, color, leftalign } = data
     const contentKeys = Object.keys(data).filter(key => key !== 'type' && key !== 'images' && key !== 'color' && key !== 'leftalign')
-    const content = contentKeys.map(key => data[key])
+    const contentObjects = contentKeys.map(key => ({[key]: data[key]}))
+    const content = Object.assign({}, ...contentObjects)
     return { type, images, content, color, leftalign }
   }, [data]);
 
@@ -90,7 +88,6 @@ export default function SplitContainer({ data }: Props) {
 
   return (
     <div className={`split-container ${type}`} id={data.title.replace(/\s/g, "").toLowerCase()} data-name={data.title}>
-    {/* <div className={`split-container ${type}`} id={''} data-name={data.title}> */}
       <div className={'image-wrapper'} {...(!leftalign || isMobile) && { style : { order: 1 } }}>
         <div className={'inner-container'}>
           {images && images.map((el, idx) => <img key={idx} src={el.image} className={'cover-img'}/>)}
